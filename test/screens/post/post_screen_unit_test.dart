@@ -9,7 +9,7 @@ import '../../mock_connectivity_service.dart';
 void main() {
   late  MockClient mockClient;
   late PostsRepository mockRepository;
-  late MockConnectivityService mockConnectivityService;
+   late MockConnectivityService mockConnectivityService;
   setUp(() {
     mockClient = MockClient();
     mockConnectivityService = MockConnectivityService();
