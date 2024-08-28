@@ -31,6 +31,9 @@ workflows:
           - muhmmdshabeer@gmail.com  # Replace with your email to receive build notifications
 
     triggering:
+      events:
+        - push
+        - pull_request
       branch_patterns:
         - pattern: 'main'
           include: true
