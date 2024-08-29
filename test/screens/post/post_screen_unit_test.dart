@@ -44,8 +44,7 @@ void main() {
     final bool isConnected = await mockConnectivityService.checkConnection();
 
     // Assert
-    expect(
-        !isConnected, false); // Ensure this matches your actual implementation
+    expect(isConnected, false); // Ensure this matches your actual implementation
   });
 
   test("API Call Failure due to server issue", () async {
