@@ -1,5 +1,5 @@
 import 'dart:convert';
-SampleResponse sampleResponseFromJson(String str) => SampleResponse.fromJson(json.decode(str));
+ SampleResponse sampleResponseFromJson(String str) => SampleResponse.fromJson(json.decode(str));
 String sampleResponseToJson(SampleResponse data) => json.encode(data.toJson());
 class SampleResponse {
   SampleResponse({
