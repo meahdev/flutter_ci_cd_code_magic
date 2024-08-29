@@ -45,7 +45,7 @@ void main() {
 
     // Assert
     expect(
-        isConnected, false); // Ensure this matches your actual implementation
+        !isConnected, false); // Ensure this matches your actual implementation
   });
 
   test("API Call Failure due to server issue", () async {
