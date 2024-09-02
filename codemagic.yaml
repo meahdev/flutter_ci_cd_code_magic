@@ -1,35 +1,56 @@
 workflows:
-  test_and_build:
-    name: Test and Build Workflow
+  # Workflow for feature branches
+  test_and_merge_feature:
+    name: Test Feature Branch
     environment:
       flutter: stable
-      # Additional environment variables can be defined here if needed
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'feature/*'
+          include: true
+          source: true
     scripts:
-      # Step 1: Run Unit and Widget Tests
       - name: Run Unit and Widget Tests
-        script: |
-          flutter test
-
-      # Step 2: Build Android Debug APK
-      - name: Build Android Debug APK
-        script: |
-          flutter build apk --debug
-
-      # Step 3: Build iOS Debug IPA
-      - name: Build iOS Debug IPA
-        script: |
-          flutter build ios --debug --no-codesign # Add --no-codesign if you don't need to sign the app
-
-    artifacts:
-      # Specify the artifacts you want to keep (e.g., APK, IPA, etc.)
-      - build/**/outputs/**/*.apk
-      - build/ios/iphonesimulator/*.app
-
+        script: flutter test
     publishing:
       email:
         recipients:
-          - muhmmdshabeer@gmail.com  # Replace with your email to receive build notifications
+          - muhmmdshabeer@gmail.com
 
+  # Workflow for the development branch
+  test_and_build_development:
+    name: Test and Build Development Branch
+    environment:
+      flutter: stable
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'developement'
+          include: true
+          source: true
+    scripts:
+      - name: Run Unit and Widget Tests
+        script: flutter test
+      - name: Build Android Debug APK
+        script: flutter build apk --debug
+      - name: Build iOS Debug IPA
+        script: flutter build ios --debug --no-codesign
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - build/ios/iphonesimulator/*.app
+    publishing:
+      email:
+        recipients:
+          - muhmmdshabeer@gmail.com
+
+  # Workflow for the main branch
+  build_and_deploy_main:
+    name: Build and Deploy Main Branch
+    environment:
+      flutter: stable
     triggering:
       events:
         - push
@@ -37,3 +58,17 @@ workflows:
         - pattern: 'main'
           include: true
           source: true
+    scripts:
+      - name: Run Unit and Widget Tests
+        script: flutter test
+      - name: Build Android Release APK
+        script: flutter build apk --release
+      - name: Build iOS Release IPA
+        script: flutter build ios --release --no-codesign
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - muhmmdshabeer@gmail.com
