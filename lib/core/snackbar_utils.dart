@@ -16,7 +16,7 @@ class SnackBarUtils {
             ));
   }
 
-  static showErrorSnackBar(BuildContext context, String message) {
+   static showErrorSnackBar(BuildContext context, String message) {
     context.showFlash<bool>(
         barrierDismissible: true,
         duration: const Duration(seconds: 2),
