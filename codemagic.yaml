@@ -5,6 +5,8 @@ workflows:
     environment:
       flutter: stable
     triggering:
+      events:
+        - pull_request
       branch_patterns:
         - pattern: 'feature/*'
           include: true
