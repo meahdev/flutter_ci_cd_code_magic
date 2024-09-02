@@ -23,6 +23,8 @@ workflows:
     environment:
       flutter: stable
     triggering:
+      events:
+        - push
       branch_patterns:
         - pattern: 'developement'
           include: true
