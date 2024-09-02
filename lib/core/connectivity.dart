@@ -5,7 +5,7 @@ class ConnectivityService {
   static final ConnectivityService _singleton = ConnectivityService._internal();
   final Connectivity _connectivity = Connectivity();
 
-    factory ConnectivityService() {
+  factory ConnectivityService() {
     return _singleton;
   }
 
