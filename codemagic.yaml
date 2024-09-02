@@ -24,7 +24,7 @@ workflows:
       flutter: stable
     triggering:
       branch_patterns:
-        - pattern: 'development'
+        - pattern: 'developement'
           include: true
           source: true
     scripts:
