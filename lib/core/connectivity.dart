@@ -11,7 +11,7 @@ class ConnectivityService {
 
   ConnectivityService._internal();
 
-  Future<bool> checkConnection() async {
+   Future<bool> checkConnection() async {
     var result = await _connectivity.checkConnectivity();
     return result != ConnectivityResult.none;
   }
