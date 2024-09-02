@@ -71,4 +71,4 @@ workflows:
     publishing:
       email:
         recipients:
-         - muhmmdshabeer@gmail.com
+          - muhmmdshabeer@gmail.com
